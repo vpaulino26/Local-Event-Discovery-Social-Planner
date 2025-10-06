@@ -1,1 +1,1 @@
-# Local-Event-Discovery-Social-Planner
+# Eventure
