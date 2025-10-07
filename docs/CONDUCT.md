@@ -9,6 +9,10 @@ We pledge to act and interact in ways that contribute to an open, welcoming, div
 
 ## Our Standards
 
+Do not be on phones or distracted on laptops during meetings. Always be paying attention to the conversation or the person talking.
+
+Have open communication with anything you are stuck on or if you can not make it to a meeting notify the chat.
+
 Examples of behavior that contributes to a positive environment for our community include:
 
 * Demonstrating empathy and kindness toward other people
@@ -37,7 +41,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [INSERT CONTACT METHOD]. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at messaging them in private and ask what went wrong and their plan for getting the work done. All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
@@ -53,7 +57,7 @@ Community leaders will follow these Community Impact Guidelines in determining t
 
 ### 2. Warning
 
-**Community Impact**: A violation through a single incident or series of actions.
+**Community Impact**: A violation through a single incident or series of actions. Up to 5 strikes and then there will be consequences 
 
 **Consequence**: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
 
