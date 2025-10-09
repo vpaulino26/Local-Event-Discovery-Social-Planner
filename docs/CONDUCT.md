@@ -59,7 +59,7 @@ Everyone will be held accountable by everyone else in thr group
 
 **Consequence**: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
 
-Signed By: Thomas Peck, Cole Risebrow
+Signed By: Thomas Peck, Cole Risebrow, Victor Paulino
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 2.1, available at [https://www.contributor-covenant.org/version/2/1/code_of_conduct.html][v2.1].
 
