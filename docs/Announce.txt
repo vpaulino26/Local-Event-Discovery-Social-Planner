@@ -1,0 +1,4 @@
+Hello all,
+We are actively making an app to help bring the community together and keep everyone informed on events in their area.
+We call it Eventure.
+The app will be released in two months.
