@@ -8,7 +8,7 @@
   Supporting Data: In our survey we asked if users would like a feature where events are pushed into their calender. That feature recieved 4/5 stars with the majority being 5 stars.
   Team Action: We will create a feature that will allow users to RSVP to an event and push it to their calender(s).
 
--Observation 3
+- Observation 3
   Observatino Statement: Peeople often forget about events that are happening or that they agreed to go to. Many people want to be remined a day or two in advance so they remember better.
   Supporting Data: Event reminds made up 26% of all responses for what they would want most in the app
   Team action: Create a reminder notification on planned events
