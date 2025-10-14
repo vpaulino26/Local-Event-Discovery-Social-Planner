@@ -9,6 +9,11 @@
   Team Action: We will create a feature that will allow users to RSVP to an event and push it to their calender(s).
 
 - Observation 3
-  Observatino Statement: Peeople often forget about events that are happening or that they agreed to go to. Many people want to be remined a day or two in advance so they remember better.
+  Observation Statement: People often forget about events that are happening or that they agreed to go to. Many people want to be reminded a day or two in advance so they remember better.
   Supporting Data: Event reminds made up 26% of all responses for what they would want most in the app
   Team action: Create a reminder notification on planned events
+
+- Observation 4
+  Observation Statement: Paint point discovery - Information regarding to event planning in social circles gets scattered across different platforms or messages get buried in the group chat.
+  Supporting Data: 20 survey responses describe scattered or buried info as a common problem in coordinating events.
+  Team Action: Create a 'group chat' feature for an event on a user's calendar to easily access critical event info. Non-critical info in that chat will be filtered out.
