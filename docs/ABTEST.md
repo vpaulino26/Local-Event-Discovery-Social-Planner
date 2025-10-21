@@ -243,7 +243,7 @@ Selected items appear in purple:
 - May need to A/B test other variables (copy, number of options, default selections)
 
 **Next Steps After Test:**
-1. Analyze results after 300+ user sessions
+1. Analyze results after 15+ user sessions
 2. Calculate statistical significance (p < 0.05 target)
 3. Review qualitative feedback from NPS surveys
 4. If variant wins (>20% improvement), deploy to 100% of users
