@@ -5,8 +5,8 @@
 - Adoption
 - DAU
 - Retention
-- CTR for an event on the Golden Path. This is done with Firebase Analytics custom event.
-- Median time to add event to calendar - Tracking how long it takes after clicking the 'add event to calendar' button for user's calendar to update
+- CTR for an event on the Golden Path
+- Median time to add event to calendar
 
 ## Metrics Collection Details
 
@@ -16,3 +16,8 @@
 ### Adoption Metrics (cam)
 - **Adoption (New User Signups)**: Tracked automatically through Firebase Authentication. Each new account creation is recorded with Firebase automatic event `sign_up` which includes parameters `method` (email/password), `timestamp`, and `user_id`. Retrieved from Firebase Authentication dashboard under "Users" tab showing user creation dates. Growth tracked as new authenticated users per day/week/month. No additional implementation needed - Firebase Auth handles this automatically.
 
+### Median Time to Add Event to Calendar
+- Tracking how long it takes after clicking the 'add event to calendar' button for user's calendar to update
+
+### CTR for an Event on the Golden Path
+- This is done with Firebase Analytics custom event
