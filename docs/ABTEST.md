@@ -249,3 +249,23 @@ Selected items appear in purple:
 4. If variant wins (>20% improvement), deploy to 100% of users
 5. If no clear winner, run follow-up tests with different variables
 6. Document learnings for future A/B tests
+
+
+##A/B Testing Light or Dark Mode (WIP)
+User story 5 -- Adding friends and light or dark mode button
+
+HEART Framework 
+--Happiness (See what color palet users prefer)
+
+**Hypothesis**
+When users first open a app the first thing they notice are the colors. If they don't like the colors or the screen is to bright for them they are less likely to come back. So if we add a switch to change it or go with the most used palet then more users will be happy.
+
+**Experiment**
+We will have firebase push a dark color palet out to 50% of users. Firebase will be able to report if their is a drop in DAU for the dark mode users. This way we will 
+-20% of users will be tested
+-Firebase DAU tracking
+
+**Variations**
+-Light color palet
+-Dark color palet
+
