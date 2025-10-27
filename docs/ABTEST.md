@@ -270,7 +270,7 @@ We will have firebase push a dark color palet out to 50% of users. Firebase will
 -Dark color palet
 
 
-# A/B Test: Main App Color Theme — Blue vs Green (Thomas)
+## A/B Test: Main App Color Theme — Blue vs Green (Thomas)
 ---
 
 ## User Story Number
@@ -352,7 +352,7 @@ Randomly assign theme on first app open and persist using **Firebase Remote Conf
 
 ---
 
-## 🎨 Variations
+## Variations
 
 ### **Variation A — Control: Blue Theme (Current)**
 | Element | Color | Notes |
