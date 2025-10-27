@@ -269,3 +269,136 @@ We will have firebase push a dark color palet out to 50% of users. Firebase will
 -Light color palet
 -Dark color palet
 
+
+# A/B Test: Main App Color Theme — Blue vs Green (Thomas)
+---
+
+## User Story Number
+**US4 – Golden Path**
+
+---
+
+## Metrics
+This experiment measures key **HEART Framework** metrics:
+
+| HEART Category | Metric | Description / Tracking |
+|----------------|---------|-------------------------|
+| **Happiness** | Theme satisfaction score (`theme_satisfaction_score`) | In-app micro-survey collected via Firebase Analytics |
+| **Engagement** | Daily Active Users (DAU) | Firebase automatic event `app_open` per day |
+| **Retention** | 7-day retention rate | Firebase Retention report segmented by theme |
+| **Task Success** | Median time to “Add Event to Calendar” | Custom Firebase event time tracking |
+| **Happiness (optional)** | NPS | In-app NPS survey correlated with theme |
+| **Guardrails** | Crash rate, accessibility, and toggle rate | Firebase Crashlytics + contrast ratio checks |
+
+---
+
+## Hypothesis
+
+**Primary Hypothesis:**  
+I think some peeople might prefer the green color because it seems lighter and more "welcoming" for some people.
+
+**Behavioral Hypothesis:**  
+The refreshed theme will make users feel more motivated to explore social features (like “Add Friend”), increasing feature engagement slightly.
+
+---
+
+## Experiment
+
+### **Overview**
+This A/B test will compare **two color themes**:
+- **Control (Blue)** — Current Eventure color palette  
+- **Variant (Green)** — Fresh, more vibrant theme palette  
+
+The experiment is implemented via **Firebase Remote Config**, and metrics are collected through **Firebase Analytics** and **Firestore**.
+
+### **Audience**
+- All active users (mobile + web)
+- Includes both **new** and **returning** users
+- Excludes **internal QA** accounts and test devices
+
+### **Allocation**
+| Variant | Description | Allocation |
+|----------|--------------|-------------|
+| Control | Blue theme (current) | 50% |
+| Variant | Greenish theme | 50% |
+
+### **Duration**
+Run for **4 weeks** or until **2,000 unique users** have completed at least one session (whichever comes first).
+
+### **Randomization**
+Randomly assign theme on first app open and persist using **Firebase Remote Config** or a backend flag.
+
+### **Firebase Remote Config Parameters**
+| Parameter | Description | Values |
+|------------|-------------|---------|
+| `main_color_theme` | Primary theme identifier | `"blue"` or `"green"` |
+| `theme_variation_version` | Palette version (for tracking iterations) | `"v1"`, `"v2"` |
+| `theme_force_toggle` | QA override | `true` / `false` |
+
+
+### **Guardrail Checks**
+- Monitor crash rate per theme variant  
+- Verify accessibility (contrast ratio ≥ 4.5:1)  
+- Track % of users manually toggling away from assigned theme (should not exceed 20%)  
+
+### **Statistical Plan**
+| Metric | Test Type | Significance Threshold |
+|---------|------------|------------------------|
+| Retention / DAU | Chi-square / proportion test | p < 0.05 |
+| Session Length | t-test or Mann-Whitney | p < 0.05 |
+| Satisfaction Score | t-test or Mann-Whitney | p < 0.05 |
+
+**Target Sample:** 2,000 total users (combined control + variant)
+
+---
+
+## 🎨 Variations
+
+### **Variation A — Control: Blue Theme (Current)**
+| Element | Color | Notes |
+|----------|--------|-------|
+| Primary | `#2B6CB0` | Deep blue |
+| Accent | `#7B68B7` | Purple accent |
+| Background | `#FFFFFF` | Light surface |
+| Text | `#111827` | Primary text |
+| Buttons | Blue gradient | Primary CTA |
+| Accessibility | Meets WCAG AA | Maintain 4.5:1 contrast |
+
+---
+
+### **Variation B — Variant: Greenish Theme**
+| Element | Color | Notes |
+|----------|--------|-------|
+| Primary | `#2E8B57` | Medium sea green |
+| Accent | `#8ED081` | Light green accent |
+| Background | `#FAFFFB` | Light green-tinted surface |
+| Text | `#0F172A` | Dark text for legibility |
+| Buttons | Solid green | Elevated CTA |
+| Accessibility | Meets WCAG AA | Check all states |
+
+---
+
+### **Design & QA Notes**
+- Only **color variables** differ between variants — layout, icons, and typography remain identical.  
+- Validate both themes in **light/dark mode** (if supported).  
+- Perform **contrast ratio tests**, **color-blind simulations**, and **smoke testing** for login, friend-adding, and event discovery flows.  
+- Monitor **Crashlytics** for exceptions correlated with `main_color_theme`.
+
+---
+
+## Expected Outcomes
+| Scenario | Action |
+|-----------|---------|
+| **If Green Wins** | Roll out to 100% of users; promote new theme; run follow-up tests for accent shades. |
+| **If Blue Wins** | Keep as default; offer green as an optional personalization theme. |
+| **If No Clear Winner** | Run sub-tests by user segment (e.g., new users) or adjust shade variants. |
+
+---
+
+## Post-Test & Reporting
+- Present results with **confidence intervals** and **p-values**  
+- Share findings with **Design** & **Product** teams  
+- Update **design tokens**, **style guide**, and **Remote Config defaults** based on winner  
+- Iterate palette if accessibility issues arise while preserving theme intent  
+
+
