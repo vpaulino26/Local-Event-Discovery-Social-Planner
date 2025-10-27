@@ -21,3 +21,10 @@
 
 ### CTR for an Event on the Golden Path
 - This is done with Firebase Analytics custom event
+
+### Interest Selection Screen Metric (Thomas)
+
+- Interest Selection Completion Rate: Tracked with Firebase Analytics custom event interest_selection_completed triggered once a user finalizes their interest choices during onboarding.
+- Parameters: user_id, num_interests_selected, time_to_complete, timestamp
+- Storage: Firestore collection user_interest_metrics
+- Purpose: Measures onboarding engagement and user willingness to personalize recommendations early in their journey
