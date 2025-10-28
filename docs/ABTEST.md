@@ -251,23 +251,41 @@ Selected items appear in purple:
 6. Document learnings for future A/B tests
 
 
-##A/B Testing Light or Dark Mode (WIP)
-User story 5 -- Adding friends and light or dark mode button
+# A/B Tests for Light & Dark Mode
+---
 
-HEART Framework 
---Happiness (See what color palet users prefer)
+## Default Theme: System vs App-Selected
 
-**Hypothesis**
-When users first open a app the first thing they notice are the colors. If they don't like the colors or the screen is to bright for them they are less likely to come back. So if we add a switch to change it or go with the most used palet then more users will be happy.
+**A/B Test Name:** Default theme: follow OS vs app-selected default
+**User Story Number:** US1 (Onboarding & First-Run Experience)
+**Metrics (HEART):** Adoption (first-run completion), Engagement (7‑day sessions), Task Success (time-to-first-action), Happiness (CSAT), Retention (D7)
+**Hypothesis:** If we default to the device’s OS theme on first launch instead of forcing our own (light), more users will complete onboarding and reach first key action faster, improving D1/D7 retention.
 
-**Experiment**
-We will have firebase push a dark color palet out to 50% of users. Firebase will be able to report if their is a drop in DAU for the dark mode users. This way we will 
--20% of users will be tested
--Firebase DAU tracking
+**Problem & Impact:**
+Current first-launch forces light mode; ~22–28% of users (industry estimate) prefer dark by default. Mismatch creates friction on first open, causing drop-offs during onboarding and slower time-to-value. Addressing first-run friction has high leverage because every new user hits it (large surface area).
 
-**Variations**
--Light color palet
--Dark color palet
+**Experiment (Firebase):**
+
+* **Audience:** New users only (no prior theme preference). Country = all; platform = iOS/Android/Web.
+* **Allocation:** 50% Control, 50% Variant; total 100% of eligible new users.
+* **Remote Config Parameters:**
+
+  * `theme_default_mode` ∈ {`app_light`, `follow_os`}
+  * `experiment_key` = `ab_default_theme_os_follow`
+* **Analytics Tracking:**
+
+  * Events: `onboarding_start`, `onboarding_complete`, `first_action` (param: `action_name`), `session_start`
+  * User property: `theme_mode` ∈ {`light`,`dark`}
+  * Conversions: `onboarding_complete`, `first_action` within 24h, `retention_d7`
+* **Sample Size/Duration (guideline):** Minimum 1–2 weeks or until ≥80% power to detect ≥2pp change in onboarding completion.
+
+**Variations:**
+
+* **Control (A):** `theme_default_mode=app_light` (force light on first run).
+* **Variant (B):** `theme_default_mode=follow_os` (read OS and set initial app theme).
+* **Design Notes:** No UI change; logic-only. First-run tooltip still educates that theme can be changed in Settings.
+
+---
 
 
 ## A/B Test: Main App Color Theme — Blue vs Green (Thomas)
