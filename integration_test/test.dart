@@ -49,7 +49,7 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_rv5u')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    expect(find.text('Create your Profile'), findsWidgets);
+    expect(find.text('Seacrch events...'), findsWidgets);
   });
 }
 
