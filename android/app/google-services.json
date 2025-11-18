@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "662828811981",
+    "project_id": "eventure-c3558",
+    "storage_bucket": "eventure-c3558.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662828811981:android:75e7b502af7ce4fd7ecb84",
+        "android_client_info": {
+          "package_name": "com.mycompany.eventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662828811981-0s0hpqjrpc65qhqtnfm8sihr2mb9c7oi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.eventure",
+            "certificate_hash": "86449d7d6e7503d6e00fbad8801a360e957b04bd"
+          }
+        },
+        {
+          "client_id": "662828811981-lnrlehvft15ttirgsgnuevb0sl71t4r2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUwB9a2h7ICycQbF67PLcLEwekTm1Q2FY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662828811981-lnrlehvft15ttirgsgnuevb0sl71t4r2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "662828811981-u5revb9ufvmujnh4mdl5ooghf9g4p0ln.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uricsc305.eventure"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662828811981:android:23600ec2928b7d9c7ecb84",
+        "android_client_info": {
+          "package_name": "com.uricsc305.eventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662828811981-ejt30vhoc27p2tgvduh0qs9sm6g7e5ol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uricsc305.eventure",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "662828811981-lnrlehvft15ttirgsgnuevb0sl71t4r2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUwB9a2h7ICycQbF67PLcLEwekTm1Q2FY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662828811981-lnrlehvft15ttirgsgnuevb0sl71t4r2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "662828811981-u5revb9ufvmujnh4mdl5ooghf9g4p0ln.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uricsc305.eventure"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
