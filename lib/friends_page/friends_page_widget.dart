@@ -212,6 +212,7 @@ class _FriendsPageWidgetState extends State<FriendsPageWidget>
                         ),
                       ),
                       FFButtonWidget(
+                        key: ValueKey('Button_68us'),
                         onPressed: () async {
                           logFirebaseEvent(
                               'FRIENDS_PAGE_PAGE_ADD_FRIEND_BTN_ON_TAP');
@@ -617,6 +618,8 @@ class _FriendsPageWidgetState extends State<FriendsPageWidget>
                                                             ),
                                                           ),
                                                           FlutterFlowIconButton(
+                                                            key: ValueKey(
+                                                                'IconButton_hsax'),
                                                             borderColor: Colors
                                                                 .transparent,
                                                             borderRadius: 8.0,

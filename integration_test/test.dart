@@ -95,14 +95,23 @@ void main() async {
 
   testWidgets('Frends', (WidgetTester tester) async {
     _overrideOnError();
-
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'thomas@thomas.com', password: 'password');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
       child: const MyApp(),
     ));
     await GoogleFonts.pendingFonts();
 
-    await tester.tap(find.byKey(const ValueKey('eventsList_kuvk')));
+    await tester.tap(find.byIcon(Icons.people));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.tap(find.byKey(const ValueKey('IconButton_hsax')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.tap(find.byIcon(Icons.settings_sharp));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.tap(find.byIcon(Icons.people));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    expect(find.byKey(const ValueKey('Button_68us')), findsWidgets);
   });
 }
 
