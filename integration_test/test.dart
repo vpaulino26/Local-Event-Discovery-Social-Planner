@@ -75,6 +75,22 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_ktgy')));
   });
+
+  testWidgets('Signing Out', (WidgetTester tester) async {
+    _overrideOnError();
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'thomas@thomas.com', password: 'password');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byIcon(Icons.settings_sharp));
+    await tester.pumpAndSettle(const Duration(milliseconds: 3000));
+    await tester.tap(find.byKey(const ValueKey('Button_h6rb')));
+    expect(find.text('Welcome Back'), findsOneWidget);
+  });
 }
 
 // There are certain types of errors that can happen during tests but

@@ -688,6 +688,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     FFButtonWidget(
+                                      key: ValueKey('Button_h6rb'),
                                       onPressed: () async {
                                         logFirebaseEvent(
                                             'PROFILE_SETTINGS_PAGE_LOGOUT_BTN_ON_TAP');
