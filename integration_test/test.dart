@@ -49,7 +49,7 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_rv5u')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
-    expect(find.text('Seacrch events...'), findsWidgets);
+    expect(find.text('Events'), findsWidgets);
   });
 
   testWidgets('us4 Golden', (WidgetTester tester) async {
@@ -74,6 +74,7 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Container_809g')));
     await tester.pumpAndSettle(const Duration(milliseconds: 3000));
     await tester.tap(find.byKey(const ValueKey('Button_ktgy')));
+    expect(find.text('Calendar'), findsOneWidget);
   });
 
   testWidgets('Signing Out', (WidgetTester tester) async {
