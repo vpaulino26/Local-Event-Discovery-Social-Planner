@@ -92,6 +92,18 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Button_h6rb')));
     expect(find.text('Welcome Back'), findsOneWidget);
   });
+
+  testWidgets('Frends', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: const MyApp(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.tap(find.byKey(const ValueKey('eventsList_kuvk')));
+  });
 }
 
 // There are certain types of errors that can happen during tests but
