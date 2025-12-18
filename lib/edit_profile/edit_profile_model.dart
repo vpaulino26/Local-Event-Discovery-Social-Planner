@@ -1,16 +1,19 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'create_profile_widget.dart' show CreateProfileWidget;
+import 'edit_profile_widget.dart' show EditProfileWidget;
 import 'package:flutter/material.dart';
 
-class CreateProfileModel extends FlutterFlowModel<CreateProfileWidget> {
+class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
+  ///  Local state fields for this page.
+
+  String? profilePhotoUrl;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  bool isDataUploading_profilePhoto = false;
-  FFUploadedFile uploadedLocalFile_profilePhoto =
+  bool isDataUploading_profilePhotoEdit = false;
+  FFUploadedFile uploadedLocalFile_profilePhotoEdit =
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
-  String uploadedFileUrl_profilePhoto = '';
+  String uploadedFileUrl_profilePhotoEdit = '';
 
   // State field(s) for yourName widget.
   FocusNode? yourNameFocusNode;

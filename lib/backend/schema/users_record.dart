@@ -80,6 +80,21 @@ class UsersRecord extends FirestoreRecord {
   DateTime? get eventDate => _eventDate;
   bool hasEventDate() => _eventDate != null;
 
+  // "friends" field.
+  List<DocumentReference>? _friends;
+  List<DocumentReference> get friends => _friends ?? const [];
+  bool hasFriends() => _friends != null;
+
+  // "outgoingRequests" field.
+  List<DocumentReference>? _outgoingRequests;
+  List<DocumentReference> get outgoingRequests => _outgoingRequests ?? const [];
+  bool hasOutgoingRequests() => _outgoingRequests != null;
+
+  // "incomingRequests" field.
+  List<DocumentReference>? _incomingRequests;
+  List<DocumentReference> get incomingRequests => _incomingRequests ?? const [];
+  bool hasIncomingRequests() => _incomingRequests != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -94,6 +109,9 @@ class UsersRecord extends FirestoreRecord {
     _name = snapshotData['name'] as String?;
     _eventRadius = castToType<double>(snapshotData['event_radius']);
     _eventDate = snapshotData['eventDate'] as DateTime?;
+    _friends = getDataList(snapshotData['friends']);
+    _outgoingRequests = getDataList(snapshotData['outgoingRequests']);
+    _incomingRequests = getDataList(snapshotData['incomingRequests']);
   }
 
   static CollectionReference get collection =>
@@ -181,7 +199,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.interests, e2?.interests) &&
         e1?.name == e2?.name &&
         e1?.eventRadius == e2?.eventRadius &&
-        e1?.eventDate == e2?.eventDate;
+        e1?.eventDate == e2?.eventDate &&
+        listEquality.equals(e1?.friends, e2?.friends) &&
+        listEquality.equals(e1?.outgoingRequests, e2?.outgoingRequests) &&
+        listEquality.equals(e1?.incomingRequests, e2?.incomingRequests);
   }
 
   @override
@@ -198,7 +219,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.interests,
         e?.name,
         e?.eventRadius,
-        e?.eventDate
+        e?.eventDate,
+        e?.friends,
+        e?.outgoingRequests,
+        e?.incomingRequests
       ]);
 
   @override

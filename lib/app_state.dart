@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -18,6 +21,39 @@ class FFAppState extends ChangeNotifier {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
       _EventRad = prefs.getDouble('ff_EventRad') ?? _EventRad;
+    });
+    _safeInit(() {
+      _myCalendarEvents = prefs
+              .getStringList('ff_myCalendarEvents')
+              ?.map((x) {
+                try {
+                  return SavedEventStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _myCalendarEvents;
+    });
+    _safeInit(() {
+      _calDate = prefs.getString('ff_calDate') ?? _calDate;
+    });
+    _safeInit(() {
+      _myEvents = prefs
+              .getStringList('ff_myEvents')
+              ?.map((x) {
+                try {
+                  return SavedEventStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _myEvents;
     });
   }
 
@@ -343,6 +379,114 @@ class FFAppState extends ChangeNotifier {
   String get googleToken => _googleToken;
   set googleToken(String value) {
     _googleToken = value;
+  }
+
+  String _tempUserQuestion = '';
+  String get tempUserQuestion => _tempUserQuestion;
+  set tempUserQuestion(String value) {
+    _tempUserQuestion = value;
+  }
+
+  String _tempEventName = '';
+  String get tempEventName => _tempEventName;
+  set tempEventName(String value) {
+    _tempEventName = value;
+  }
+
+  /// Switches the displayed info from ticketmaster to custom events
+  bool _eventswtich = false;
+  bool get eventswtich => _eventswtich;
+  set eventswtich(bool value) {
+    _eventswtich = value;
+  }
+
+  List<SavedEventStruct> _myCalendarEvents = [];
+  List<SavedEventStruct> get myCalendarEvents => _myCalendarEvents;
+  set myCalendarEvents(List<SavedEventStruct> value) {
+    _myCalendarEvents = value;
+    prefs.setStringList(
+        'ff_myCalendarEvents', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToMyCalendarEvents(SavedEventStruct value) {
+    myCalendarEvents.add(value);
+    prefs.setStringList('ff_myCalendarEvents',
+        _myCalendarEvents.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromMyCalendarEvents(SavedEventStruct value) {
+    myCalendarEvents.remove(value);
+    prefs.setStringList('ff_myCalendarEvents',
+        _myCalendarEvents.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromMyCalendarEvents(int index) {
+    myCalendarEvents.removeAt(index);
+    prefs.setStringList('ff_myCalendarEvents',
+        _myCalendarEvents.map((x) => x.serialize()).toList());
+  }
+
+  void updateMyCalendarEventsAtIndex(
+    int index,
+    SavedEventStruct Function(SavedEventStruct) updateFn,
+  ) {
+    myCalendarEvents[index] = updateFn(_myCalendarEvents[index]);
+    prefs.setStringList('ff_myCalendarEvents',
+        _myCalendarEvents.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInMyCalendarEvents(int index, SavedEventStruct value) {
+    myCalendarEvents.insert(index, value);
+    prefs.setStringList('ff_myCalendarEvents',
+        _myCalendarEvents.map((x) => x.serialize()).toList());
+  }
+
+  String _calDate = '';
+  String get calDate => _calDate;
+  set calDate(String value) {
+    _calDate = value;
+    prefs.setString('ff_calDate', value);
+  }
+
+  List<SavedEventStruct> _myEvents = [];
+  List<SavedEventStruct> get myEvents => _myEvents;
+  set myEvents(List<SavedEventStruct> value) {
+    _myEvents = value;
+    prefs.setStringList(
+        'ff_myEvents', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToMyEvents(SavedEventStruct value) {
+    myEvents.add(value);
+    prefs.setStringList(
+        'ff_myEvents', _myEvents.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromMyEvents(SavedEventStruct value) {
+    myEvents.remove(value);
+    prefs.setStringList(
+        'ff_myEvents', _myEvents.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromMyEvents(int index) {
+    myEvents.removeAt(index);
+    prefs.setStringList(
+        'ff_myEvents', _myEvents.map((x) => x.serialize()).toList());
+  }
+
+  void updateMyEventsAtIndex(
+    int index,
+    SavedEventStruct Function(SavedEventStruct) updateFn,
+  ) {
+    myEvents[index] = updateFn(_myEvents[index]);
+    prefs.setStringList(
+        'ff_myEvents', _myEvents.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInMyEvents(int index, SavedEventStruct value) {
+    myEvents.insert(index, value);
+    prefs.setStringList(
+        'ff_myEvents', _myEvents.map((x) => x.serialize()).toList());
   }
 }
 

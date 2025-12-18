@@ -6,37 +6,37 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'create_profile2_model.dart';
-export 'create_profile2_model.dart';
+import 'edit_location_model.dart';
+export 'edit_location_model.dart';
 
-class CreateProfile2Widget extends StatefulWidget {
-  const CreateProfile2Widget({super.key});
+class EditLocationWidget extends StatefulWidget {
+  const EditLocationWidget({super.key});
 
-  static String routeName = 'create_profile_2';
-  static String routePath = '/createProfile2';
+  static String routeName = 'edit_location';
+  static String routePath = '/editLocation';
 
   @override
-  State<CreateProfile2Widget> createState() => _CreateProfile2WidgetState();
+  State<EditLocationWidget> createState() => _EditLocationWidgetState();
 }
 
-class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
-  late CreateProfile2Model _model;
+class _EditLocationWidgetState extends State<EditLocationWidget> {
+  late EditLocationModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateProfile2Model());
+    _model = createModel(context, () => EditLocationModel());
 
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'create_profile_2'});
-    _model.cityTextController ??= TextEditingController();
+        parameters: {'screen_name': 'edit_location'});
+    _model.cityTextController ??= TextEditingController(
+        text: valueOrDefault(currentUserDocument?.city, ''));
     _model.cityFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -92,7 +92,7 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                               ),
                               onPressed: () async {
                                 logFirebaseEvent(
-                                    'CREATE_PROFILE_2_arrow_back_rounded_ICN_');
+                                    'EDIT_LOCATION_arrow_back_rounded_ICN_ON_');
                                 logFirebaseEvent('IconButton_navigate_back');
                                 context.safePop();
                               },
@@ -105,7 +105,7 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        'Add Your Location',
+                        'Edit your Location',
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
@@ -143,62 +143,62 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
         top: true,
         child: Padding(
           padding: EdgeInsets.all(12.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Form(
-                  key: _model.formKey,
-                  autovalidateMode: AutovalidateMode.always,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 100.0,
-                              height: 100.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
-                                ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Form(
+                key: _model.formKey,
+                autovalidateMode: AutovalidateMode.always,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 100.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
                               ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: AuthUserStreamWidget(
-                                  builder: (context) => ClipRRect(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                    child: Image.network(
-                                      currentUserPhoto,
-                                      width: 100.0,
-                                      height: 100.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(4.0),
+                              child: AuthUserStreamWidget(
+                                builder: (context) => ClipRRect(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  child: Image.network(
+                                    currentUserPhoto,
+                                    width: 100.0,
+                                    height: 100.0,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 0.0, 40.0, 16.0),
-                        child: TextFormField(
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 16.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => TextFormField(
                           controller: _model.cityTextController,
                           focusNode: _model.cityFocusNode,
                           onFieldSubmitted: (_) async {
                             logFirebaseEvent(
-                                'CREATE_PROFILE_2_city_ON_TEXTFIELD_SUBMI');
+                                'EDIT_LOCATION_city_ON_TEXTFIELD_SUBMIT');
                             logFirebaseEvent('city_backend_call');
 
                             await currentUserReference!
@@ -315,12 +315,17 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 0.0, 40.0, 12.0),
-                        child: FlutterFlowDropDown<String>(
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 12.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => FlutterFlowDropDown<String>(
                           controller: _model.stateValueController ??=
-                              FormFieldController<String>(null),
+                              FormFieldController<String>(
+                            _model.stateValue ??=
+                                valueOrDefault(currentUserDocument?.state, ''),
+                          ),
                           options: [
                             'Alabama',
                             'Alaska',
@@ -376,7 +381,7 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                           onChanged: (val) async {
                             safeSetState(() => _model.stateValue = val);
                             logFirebaseEvent(
-                                'CREATE_PROFILE_2_state_ON_FORM_WIDGET_SE');
+                                'EDIT_LOCATION_state_ON_FORM_WIDGET_SELEC');
                             logFirebaseEvent('state_backend_call');
 
                             await currentUserReference!
@@ -422,50 +427,12 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                           isMultiSelect: false,
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                        child: Text(
-                          'Choose Event Radius (Miles)',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                font: GoogleFonts.interTight(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .fontStyle,
-                              ),
-                        ),
-                      ),
-                      Slider(
-                        activeColor: Color(0xFF7480A9),
-                        inactiveColor: FlutterFlowTheme.of(context).alternate,
-                        min: 0.0,
-                        max: 100.0,
-                        value: _model.sliderValue ??= FFAppState().EventRad,
-                        label: _model.sliderValue?.toStringAsFixed(0),
-                        divisions: 100,
-                        onChanged: (newValue) {
-                          newValue = double.parse(newValue.toStringAsFixed(0));
-                          safeSetState(() => _model.sliderValue = newValue);
-                        },
-                      ),
-                      Text(
-                        valueOrDefault<String>(
-                          _model.sliderValue?.toString(),
-                          '6',
-                        ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: Text(
+                        'Choose Event Radius (Miles)',
                         style:
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   font: GoogleFonts.interTight(
@@ -476,7 +443,6 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                                         .headlineSmall
                                         .fontStyle,
                                   ),
-                                  fontSize: 22.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .headlineSmall
@@ -486,37 +452,67 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                                       .fontStyle,
                                 ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: Container(
-                    width: 350.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).accent1,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(
-                        color: FlutterFlowTheme.of(context).primary,
-                        width: 1.0,
-                      ),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 16.0, 16.0, 16.0),
-                      child: Text(
-                        'AI Tip: We\'ll use your location to find events and suggest activities based on your interests!',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
+                    Slider(
+                      activeColor: Color(0xFF7480A9),
+                      inactiveColor: FlutterFlowTheme.of(context).alternate,
+                      min: 0.0,
+                      max: 100.0,
+                      value: _model.sliderValue ??= FFAppState().EventRad,
+                      label: _model.sliderValue?.toStringAsFixed(0),
+                      divisions: 100,
+                      onChanged: (newValue) {
+                        newValue = double.parse(newValue.toStringAsFixed(0));
+                        safeSetState(() => _model.sliderValue = newValue);
+                      },
+                    ),
+                    Text(
+                      valueOrDefault<String>(
+                        _model.sliderValue?.toString(),
+                        '6',
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
+                                ),
+                                fontSize: 22.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .headlineSmall
                                     .fontWeight,
                                 fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .headlineSmall
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).primary,
-                              letterSpacing: 0.0,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                child: Container(
+                  width: 350.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).accent1,
+                    borderRadius: BorderRadius.circular(8.0),
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).primary,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    child: Text(
+                      'AI Tip: We\'ll use your location to find events and suggest activities based on your interests!',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .fontWeight,
@@ -524,77 +520,70 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                      ),
+                            color: FlutterFlowTheme.of(context).primary,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.05),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        logFirebaseEvent(
-                            'CREATE_PROFILE_2_PAGE_NEXT_BTN_ON_TAP');
-                        logFirebaseEvent('Button_validate_form');
-                        if (_model.formKey.currentState == null ||
-                            !_model.formKey.currentState!.validate()) {
-                          return;
-                        }
-                        if (_model.stateValue == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Please select state',
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.05),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      logFirebaseEvent('EDIT_LOCATION_PAGE_SAVE_BTN_ON_TAP');
+                      logFirebaseEvent('Button_validate_form');
+                      if (_model.formKey.currentState == null ||
+                          !_model.formKey.currentState!.validate()) {
+                        return;
+                      }
+                      if (_model.stateValue == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Please select state',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
                               ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).secondary,
                             ),
-                          );
-                          return;
-                        }
-                        logFirebaseEvent('Button_update_app_state');
-                        FFAppState().EventRad = _model.sliderValue!;
-                        safeSetState(() {});
-                        logFirebaseEvent('Button_backend_call');
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                          ),
+                        );
+                        return;
+                      }
+                      logFirebaseEvent('Button_update_app_state');
+                      FFAppState().EventRad = _model.sliderValue!;
+                      safeSetState(() {});
+                      logFirebaseEvent('Button_backend_call');
 
-                        await currentUserReference!
-                            .update(createUsersRecordData(
-                          city: _model.cityTextController.text,
-                          state: _model.stateValue,
-                          eventRadius: FFAppState().EventRad,
-                        ));
-                        logFirebaseEvent('Button_navigate_to');
-
-                        context.pushNamed(CreateProfile3Widget.routeName);
-                      },
-                      text: 'Next',
-                      options: FFButtonOptions(
-                        width: 270.0,
-                        height: 50.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
+                      await currentUserReference!.update(createUsersRecordData(
+                        city: _model.cityTextController.text,
+                        state: _model.stateValue,
+                        eventRadius: FFAppState().EventRad,
+                      ));
+                    },
+                    text: 'Save',
+                    options: FFButtonOptions(
+                      width: 270.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                font: GoogleFonts.interTight(
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .fontWeight,
@@ -602,14 +591,22 @@ class _CreateProfile2WidgetState extends State<CreateProfile2Widget> {
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(24.0),
-                      ),
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontStyle,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(24.0),
                     ),
                   ),
                 ),
-              ].divide(SizedBox(height: 5.0)),
-            ),
+              ),
+            ].divide(SizedBox(height: 5.0)),
           ),
         ),
       ),

@@ -91,11 +91,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               : SignupLoginWidget(),
         ),
         FFRoute(
-          name: ProfileSettingsWidget.routeName,
-          path: ProfileSettingsWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'profile_settings')
-              : ProfileSettingsWidget(),
+          name: CreateProfileWidget.routeName,
+          path: CreateProfileWidget.routePath,
+          builder: (context, params) => CreateProfileWidget(),
+        ),
+        FFRoute(
+          name: CreateProfile2Widget.routeName,
+          path: CreateProfile2Widget.routePath,
+          builder: (context, params) => CreateProfile2Widget(),
         ),
         FFRoute(
           name: CreateProfile3Widget.routeName,
@@ -103,16 +106,35 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => CreateProfile3Widget(),
         ),
         FFRoute(
+          name: EditLocationWidget.routeName,
+          path: EditLocationWidget.routePath,
+          builder: (context, params) => EditLocationWidget(),
+        ),
+        FFRoute(
+          name: ProfileSettingsWidget.routeName,
+          path: ProfileSettingsWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'profile_settings')
+              : ProfileSettingsWidget(),
+        ),
+        FFRoute(
+          name: FriendsPageWidget.routeName,
+          path: FriendsPageWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'friends_page')
+              : FriendsPageWidget(),
+        ),
+        FFRoute(
+          name: EditProfileWidget.routeName,
+          path: EditProfileWidget.routePath,
+          builder: (context, params) => EditProfileWidget(),
+        ),
+        FFRoute(
           name: EventsListWidget.routeName,
           path: EventsListWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'eventsList')
               : EventsListWidget(),
-        ),
-        FFRoute(
-          name: CreateProfile2Widget.routeName,
-          path: CreateProfile2Widget.routePath,
-          builder: (context, params) => CreateProfile2Widget(),
         ),
         FFRoute(
           name: EventDetailsWidget.routeName,
@@ -210,24 +232,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               'homepageUrl',
               ParamType.String,
             ),
+            fromTicketMaster: params.getParam(
+              'fromTicketMaster',
+              ParamType.bool,
+            ),
+            ceName: params.getParam(
+              'ceName',
+              ParamType.String,
+            ),
           ),
+        ),
+        FFRoute(
+          name: CalendarWidget.routeName,
+          path: CalendarWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Calendar')
+              : CalendarWidget(),
         ),
         FFRoute(
           name: SignupLoginWidget.routeName,
           path: SignupLoginWidget.routePath,
           builder: (context, params) => SignupLoginWidget(),
-        ),
-        FFRoute(
-          name: CalenderWidget.routeName,
-          path: CalenderWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'calender')
-              : CalenderWidget(),
-        ),
-        FFRoute(
-          name: CreateProfileWidget.routeName,
-          path: CreateProfileWidget.routePath,
-          builder: (context, params) => CreateProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

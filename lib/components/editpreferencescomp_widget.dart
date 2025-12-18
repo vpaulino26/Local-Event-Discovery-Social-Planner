@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -84,7 +85,7 @@ class _EditpreferencescompWidgetState extends State<EditpreferencescompWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      height: 735.0,
+      height: 738.0,
       decoration: BoxDecoration(
         color: Colors.transparent,
       ),
@@ -107,8 +108,8 @@ class _EditpreferencescompWidgetState extends State<EditpreferencescompWidget> {
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
-            topLeft: Radius.circular(24.0),
-            topRight: Radius.circular(24.0),
+            topLeft: Radius.circular(25.0),
+            topRight: Radius.circular(25.0),
           ),
         ),
         child: Padding(
@@ -116,34 +117,49 @@ class _EditpreferencescompWidgetState extends State<EditpreferencescompWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 40.0,
-                height: 4.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).alternate,
-                  borderRadius: BorderRadius.circular(2.0),
-                ),
-                alignment: AlignmentDirectional(0.0, 0.0),
-              ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Edit Preferences',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          font: GoogleFonts.interTight(
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .fontStyle,
-                          ),
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .fontStyle,
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Edit Preferences',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              font: GoogleFonts.interTight(
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .fontStyle,
+                            ),
+                      ),
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 16.0,
+                        buttonSize: 45.0,
+                        fillColor: Colors.transparent,
+                        icon: Icon(
+                          Icons.close,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 27.0,
                         ),
+                        onPressed: () async {
+                          logFirebaseEvent('EDITPREFERENCESclose_ICN_ON_TAP');
+                          logFirebaseEvent('IconButton_bottom_sheet');
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
                   ),
                   Text(
                     'Update your location, radius, and interests.',
@@ -175,6 +191,143 @@ class _EditpreferencescompWidgetState extends State<EditpreferencescompWidget> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                        child: Text(
+                          'State',
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 6.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => FlutterFlowDropDown<String>(
+                            controller: _model.dropDownValueController ??=
+                                FormFieldController<String>(
+                              _model.dropDownValue ??= valueOrDefault(
+                                  currentUserDocument?.state, ''),
+                            ),
+                            options: [
+                              'Alabama',
+                              'Alaska',
+                              'Arizona',
+                              'Arkansas',
+                              'California',
+                              'Colorado',
+                              'Connecticut',
+                              'Delaware',
+                              'Florida',
+                              'Georgia',
+                              'Hawaii',
+                              'Idaho',
+                              'Illinois',
+                              'Indiana',
+                              'Iowa',
+                              'Kansas',
+                              'Kentucky',
+                              'Louisiana',
+                              'Maine',
+                              'Maryland',
+                              'Massachusetts',
+                              'Michigan',
+                              'Minnesota',
+                              'Mississippi',
+                              'Missouri',
+                              'Montana',
+                              'Nebraska',
+                              'Nevada',
+                              'New Hampshire',
+                              'New Jersey',
+                              'New Mexico',
+                              'New York',
+                              'North Carolina',
+                              'North Dakota',
+                              'Ohio',
+                              'Oklahoma',
+                              'Oregon',
+                              'Pennsylvania',
+                              'Rhode Island',
+                              'South Carolina',
+                              'South Dakota',
+                              'Tennessee',
+                              'Texas',
+                              'Utah',
+                              'Vermont',
+                              'Virginia',
+                              'Washington',
+                              'West Virginia',
+                              'Wisconsin',
+                              'Wyoming'
+                            ],
+                            onChanged: (val) =>
+                                safeSetState(() => _model.dropDownValue = val),
+                            width: double.infinity,
+                            height: 50.0,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                            hintText: 'Select...',
+                            icon: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            elevation: 2.0,
+                            borderColor: Colors.transparent,
+                            borderWidth: 0.0,
+                            borderRadius: 8.0,
+                            margin: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 12.0, 0.0),
+                            hidesUnderline: true,
+                            isOverButton: false,
+                            isSearchable: false,
+                            isMultiSelect: false,
+                          ),
+                        ),
+                      ),
+                    ].divide(SizedBox(height: 8.0)),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
                         'City',
                         style:
@@ -196,216 +349,90 @@ class _EditpreferencescompWidgetState extends State<EditpreferencescompWidget> {
                                       .fontStyle,
                                 ),
                       ),
-                      AuthUserStreamWidget(
-                        builder: (context) => TextFormField(
-                          controller: _model.textController,
-                          focusNode: _model.textFieldFocusNode,
-                          autofocus: false,
-                          textInputAction: TextInputAction.next,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: 'Enter your city',
-                            hintStyle:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontStyle,
-                                    ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            filled: true,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                          validator: _model.textControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
                     ].divide(SizedBox(height: 8.0)),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'State',
-                        style:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                      ),
-                      AuthUserStreamWidget(
-                        builder: (context) => FlutterFlowDropDown<String>(
-                          controller: _model.dropDownValueController ??=
-                              FormFieldController<String>(
-                            _model.dropDownValue ??=
-                                valueOrDefault(currentUserDocument?.state, ''),
-                          ),
-                          options: [
-                            'Alabama',
-                            'Alaska',
-                            'Arizona',
-                            'Arkansas',
-                            'California',
-                            'Colorado',
-                            'Connecticut',
-                            'Delaware',
-                            'Florida',
-                            'Georgia',
-                            'Hawaii',
-                            'Idaho',
-                            'Illinois',
-                            'Indiana',
-                            'Iowa',
-                            'Kansas',
-                            'Kentucky',
-                            'Louisiana',
-                            'Maine',
-                            'Maryland',
-                            'Massachusetts',
-                            'Michigan',
-                            'Minnesota',
-                            'Mississippi',
-                            'Missouri',
-                            'Montana',
-                            'Nebraska',
-                            'Nevada',
-                            'New Hampshire',
-                            'New Jersey',
-                            'New Mexico',
-                            'New York',
-                            'North Carolina',
-                            'North Dakota',
-                            'Ohio',
-                            'Oklahoma',
-                            'Oregon',
-                            'Pennsylvania',
-                            'Rhode Island',
-                            'South Carolina',
-                            'South Dakota',
-                            'Tennessee',
-                            'Texas',
-                            'Utah',
-                            'Vermont',
-                            'Virginia',
-                            'Washington',
-                            'West Virginia',
-                            'Wisconsin',
-                            'Wyoming'
-                          ],
-                          onChanged: (val) =>
-                              safeSetState(() => _model.dropDownValue = val),
-                          width: double.infinity,
-                          height: 50.0,
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                    child: AuthUserStreamWidget(
+                      builder: (context) => TextFormField(
+                        controller: _model.textController,
+                        focusNode: _model.textFieldFocusNode,
+                        autofocus: false,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: 'Enter your city',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
                                     font: GoogleFonts.inter(
                                       fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyLarge
                                         .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyLarge
                                         .fontStyle,
                                   ),
-                          hintText: 'Select...',
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
                           fillColor:
                               FlutterFlowTheme.of(context).primaryBackground,
-                          elevation: 2.0,
-                          borderColor: Colors.transparent,
-                          borderWidth: 0.0,
-                          borderRadius: 8.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 12.0, 0.0),
-                          hidesUnderline: true,
-                          isOverButton: false,
-                          isSearchable: false,
-                          isMultiSelect: false,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                        validator:
+                            _model.textControllerValidator.asValidator(context),
                       ),
-                    ].divide(SizedBox(height: 8.0)),
+                    ),
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.min,
@@ -594,89 +621,98 @@ class _EditpreferencescompWidgetState extends State<EditpreferencescompWidget> {
                   ),
                 ].divide(SizedBox(height: 16.0)),
               ),
-              FFButtonWidget(
-                onPressed: (functions.isInterestCountValid(
-                            FFAppState().selectedInterests.toList(), 3, 5)
-                        ? false
-                        : true)
-                    ? null
-                    : () async {
-                        logFirebaseEvent(
-                            'EDITPREFERENCESSAVE__APPLY_BTN_ON_TAP');
-                        if (functions.isInterestCountValid(
-                            FFAppState().selectedInterests.toList(), 3, 5)) {
-                          logFirebaseEvent('Button_backend_call');
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: (functions.isInterestCountValid(
+                              FFAppState().selectedInterests.toList(), 3, 5)
+                          ? false
+                          : true)
+                      ? null
+                      : () async {
+                          logFirebaseEvent(
+                              'EDITPREFERENCESSAVE__APPLY_BTN_ON_TAP');
+                          if (functions.isInterestCountValid(
+                              FFAppState().selectedInterests.toList(), 3, 5)) {
+                            logFirebaseEvent('Button_backend_call');
 
-                          await currentUserReference!.update({
-                            ...createUsersRecordData(
-                              city: _model.textController.text,
-                              state: _model.dropDownValue,
-                              eventRadius: _model.sliderValue,
-                            ),
-                            ...mapToFirestore(
-                              {
-                                'interests': FFAppState().selectedInterests,
-                              },
-                            ),
-                          });
-                          logFirebaseEvent('Button_update_app_state');
-                          FFAppState().userCity = _model.textController.text;
-                          FFAppState().userStateCode = _model.dropDownValue!;
-                          FFAppState().EventRad = _model.sliderValue!;
-                          FFAppState().selectedInterests =
-                              _model.choiceChipsValues!.toList().cast<String>();
-                          _model.updatePage(() {});
-                          logFirebaseEvent('Button_custom_action');
-                          _model.tmFromPreferences =
-                              await actions.callTicketmasterAPI(
-                            FFAppState().userCity,
-                            FFAppState().userStateCode,
-                            FFAppState().EventRad,
-                            FFAppState().selectedInterests.toList(),
-                            '',
-                          );
-                          logFirebaseEvent('Button_update_app_state');
-                          FFAppState().searchResult = _model.tmFromPreferences!
-                              .toList()
-                              .cast<dynamic>();
-                          _model.updatePage(() {});
-                          logFirebaseEvent('Button_bottom_sheet');
-                          Navigator.pop(context);
-                        }
+                            await currentUserReference!.update({
+                              ...createUsersRecordData(
+                                city: _model.textController.text,
+                                state: _model.dropDownValue,
+                                eventRadius: _model.sliderValue,
+                              ),
+                              ...mapToFirestore(
+                                {
+                                  'interests': FFAppState().selectedInterests,
+                                },
+                              ),
+                            });
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().userCity = _model.textController.text;
+                            FFAppState().userStateCode = _model.dropDownValue!;
+                            FFAppState().EventRad = _model.sliderValue!;
+                            FFAppState().selectedInterests = _model
+                                .choiceChipsValues!
+                                .toList()
+                                .cast<String>();
+                            _model.updatePage(() {});
+                            logFirebaseEvent('Button_custom_action');
+                            _model.tmFromPreferences =
+                                await actions.callTicketmasterAPI(
+                              FFAppState().userCity,
+                              FFAppState().userStateCode,
+                              FFAppState().EventRad,
+                              FFAppState().selectedInterests.toList(),
+                              '',
+                            );
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().searchResult = _model
+                                .tmFromPreferences!
+                                .toList()
+                                .cast<dynamic>();
+                            _model.updatePage(() {});
+                            logFirebaseEvent('Button_bottom_sheet');
+                            Navigator.pop(context);
+                          }
 
-                        safeSetState(() {});
-                      },
-                text: 'Save & Apply',
-                options: FFButtonOptions(
-                  width: double.infinity,
-                  height: 50.0,
-                  padding: EdgeInsets.all(8.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.interTight(
+                          safeSetState(() {});
+                        },
+                  text: 'Save & Apply',
+                  options: FFButtonOptions(
+                    width: 270.0,
+                    height: 50.0,
+                    padding: EdgeInsets.all(8.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          font: GoogleFonts.interTight(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
+                          ),
+                          color: FlutterFlowTheme.of(context).info,
+                          letterSpacing: 0.0,
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,
                           fontStyle:
                               FlutterFlowTheme.of(context).titleSmall.fontStyle,
                         ),
-                        color: FlutterFlowTheme.of(context).info,
-                        letterSpacing: 0.0,
-                        fontWeight:
-                            FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                      ),
-                  elevation: 0.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(24.0),
+                    disabledColor:
+                        FlutterFlowTheme.of(context).primaryBackground,
+                    disabledTextColor: FlutterFlowTheme.of(context).primary,
                   ),
-                  borderRadius: BorderRadius.circular(12.0),
-                  disabledColor: FlutterFlowTheme.of(context).primaryBackground,
-                  disabledTextColor: FlutterFlowTheme.of(context).primary,
                 ),
               ),
             ].divide(SizedBox(height: 20.0)),

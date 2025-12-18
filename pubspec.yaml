@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.2+4
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -37,6 +37,7 @@ dependencies:
   collection: 1.19.1
   csslib: 1.0.2
   dropdown_button2: 2.3.9
+  easy_debounce: 2.0.1
   equatable: 2.0.7
   file_picker: 10.1.9
   firebase_analytics: 11.5.0
@@ -59,11 +60,17 @@ dependencies:
   firebase_storage_web: 3.10.14
   flutter_animate: 4.5.0
   flutter_cache_manager: 3.4.1
+  flutter_google_places: 
+    git:
+      url: https://github.com/ShehanYjoz/flutter_google_places.git
+      ref: 52ddef33b785fac671a04dd387c5ba7d921709bf
   flutter_plugin_android_lifecycle: 2.0.28
   font_awesome_flutter: 10.7.0
   from_css_color: 2.0.0
   go_router: 12.1.3
+  google_api_headers: 4.5.3
   google_fonts: 6.1.0
+  google_mobile_ads: 6.0.0
   google_sign_in: 6.3.0
   google_sign_in_android: 6.2.1
   google_sign_in_ios: 5.9.0
@@ -82,6 +89,8 @@ dependencies:
   intl: 0.20.2
   json_path: 0.7.2
   mime_type: 1.0.0
+  package_info_plus: 8.0.2
+  package_info_plus_platform_interface: 3.0.1
   page_transition: 2.1.0
   path_provider: 2.1.4
   path_provider_android: 2.2.10
@@ -105,7 +114,6 @@ dependencies:
   sqflite: 2.3.3+1
   sqflite_common: 2.5.4+3
   stream_transform: 2.1.0
-  table_calendar: 3.2.0
   timeago: 3.7.1
   url_launcher: 6.3.1
   url_launcher_android: 6.3.16
@@ -126,7 +134,10 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dependency_overrides:
+  google_api_headers: 4.5.3
   http: 1.4.0
+  package_info_plus: 8.0.2
+  package_info_plus_platform_interface: 3.0.1
   uuid: ^4.0.0
 
 dev_dependencies:
@@ -170,6 +181,7 @@ flutter:
     - assets/pdfs/
     - assets/jsons/
 
+    - assets/environment_values/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,9 +1,12 @@
+import '/backend/schema/structs/index.dart';
+import '/components/a_i_assist_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'event_details_model.dart';
 export 'event_details_model.dart';
@@ -34,6 +37,8 @@ class EventDetailsWidget extends StatefulWidget {
     this.distance,
     this.seatmapUrl,
     this.homepageUrl,
+    required this.fromTicketMaster,
+    required this.ceName,
   });
 
   final String? name;
@@ -59,6 +64,8 @@ class EventDetailsWidget extends StatefulWidget {
   final double? distance;
   final String? seatmapUrl;
   final String? homepageUrl;
+  final bool? fromTicketMaster;
+  final String? ceName;
 
   static String routeName = 'eventDetails';
   static String routePath = '/eventDetails';
@@ -99,39 +106,38 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 30.0,
-            ),
-            onPressed: () async {
-              logFirebaseEvent('EVENT_DETAILS_arrow_back_rounded_ICN_ON_');
-              logFirebaseEvent('IconButton_navigate_back');
-              context.pop();
-            },
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(8.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30.0,
+                    borderWidth: 1.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.arrow_back_rounded,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      logFirebaseEvent(
+                          'EVENT_DETAILS_arrow_back_rounded_ICN_ON_');
+                      logFirebaseEvent('IconButton_navigate_back');
+                      context.pop();
+                    },
+                  ),
+                ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(2.0),
+                    padding: EdgeInsets.all(10.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -146,9 +152,8 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(12.0),
+                                color: Color(0xFFEEF1FA),
+                                borderRadius: BorderRadius.circular(16.0),
                               ),
                               child: Padding(
                                 padding: EdgeInsets.all(2.0),
@@ -158,7 +163,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 12.0),
+                                          10.0, 10.0, 10.0, 12.0),
                                       child: Text(
                                         valueOrDefault<String>(
                                           widget.name,
@@ -192,7 +197,8 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(2.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 2.0, 4.0, 2.0),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(10.0),
@@ -206,7 +212,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 4.0),
+                                          4.0, 8.0, 2.0, 4.0),
                                       child: Text(
                                         valueOrDefault<String>(
                                           widget.location,
@@ -238,55 +244,61 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                             ),
                                       ),
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 4.0, 0.0, 4.0),
-                                          child: Text(
-                                            '${widget.formattedDate}, ${widget.formattedTime}',
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          2.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    4.0, 4.0, 4.0, 4.0),
+                                            child: Text(
+                                              '${widget.formattedDate}, ${widget.formattedTime}',
+                                              maxLines: 1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 4.0),
+                                          4.0, 12.0, 4.0, 4.0),
                                       child: Text(
                                         'Ticket Prices: ${valueOrDefault<String>(
                                           widget.priceRange,
@@ -317,17 +329,77 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                             ),
                                       ),
                                     ),
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 6.0, 0.0, 6.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            logFirebaseEvent(
+                                                'EVENT_DETAILS_TICKET_LINK_BTN_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Button_launch_u_r_l');
+                                            await launchURL(widget.ticketUrl!);
+                                          },
+                                          text: 'Ticket Link',
+                                          options: FFButtonOptions(
+                                            width: 270.0,
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Colors.white,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 12.0),
+                                          2.0, 12.0, 2.0, 12.0),
                                       child: Container(
                                         width: double.infinity,
                                         constraints: BoxConstraints(
                                           maxWidth: 570.0,
                                         ),
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                          color: Color(0xFFEEF1FA),
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           border: Border.all(
@@ -346,7 +418,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 16.0, 4.0),
+                                                        4.0, 0.0, 16.0, 4.0),
                                                 child: Text(
                                                   'Event Venue',
                                                   style: FlutterFlowTheme.of(
@@ -383,7 +455,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 0.0, 4.0),
+                                                        2.0, 0.0, 2.0, 4.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     widget.venueName,
@@ -424,7 +496,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 0.0, 12.0),
+                                                        4.0, 0.0, 4.0, 12.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     widget.venueAddressLine1,
@@ -464,7 +536,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 12.0, 0.0, 4.0),
+                                                        4.0, 12.0, 4.0, 4.0),
                                                 child: Text(
                                                   'Event Parking Information',
                                                   style: FlutterFlowTheme.of(
@@ -501,7 +573,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
+                                                        4.0, 4.0, 4.0, 0.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     widget.parkingDetail,
@@ -544,7 +616,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 12.0),
+                                          2.0, 8.0, 2.0, 12.0),
                                       child: Text(
                                         valueOrDefault<String>(
                                           widget.description,
@@ -575,86 +647,6 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                             ),
                                       ),
                                     ),
-                                    Text(
-                                      'Friends attending',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontStyle,
-                                            ),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 32.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 12.0, 2.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              child: Image.network(
-                                                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
-                                                width: 80.0,
-                                                height: 80.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 12.0, 2.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              child: Image.network(
-                                                'https://images.unsplash.com/photo-1614436163996-25cee5f54290?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
-                                                width: 80.0,
-                                                height: 80.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 12.0, 2.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              child: Image.network(
-                                                'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
-                                                width: 80.0,
-                                                height: 80.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
@@ -665,115 +657,39 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      logFirebaseEvent('EVENT_DETAILS_TICKET_LINK_BTN_ON_TAP');
-                      logFirebaseEvent('Button_launch_u_r_l');
-                      await launchURL(widget.ticketUrl!);
-                    },
-                    text: 'Ticket Link',
-                    options: FFButtonOptions(
-                      width: double.infinity,
-                      height: 50.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0x8F0E055C),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                font: GoogleFonts.interTight(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontStyle,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent('EVENT_DETAILS_PAGE_button_2_ON_TAP');
-                      logFirebaseEvent('button_2_launch_u_r_l');
-                      await launchURL(widget.ticketUrl!);
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primary,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4.0,
-                            color: Color(0x33000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).accent1,
-                          width: 2.0,
-                        ),
-                      ),
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'EVENT_DETAILS_ADD_TO_CALENDER_BTN_ON_TAP');
-                              logFirebaseEvent('Button_navigate_to');
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FFButtonWidget(
+                      key: ValueKey('Button_ktgy'),
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'EVENT_DETAILS_ADD_TO_CALENDAR_BTN_ON_TAP');
+                        logFirebaseEvent('Button_update_app_state');
+                        FFAppState().calDate = widget.formattedDate!;
+                        FFAppState().addToMyCalendarEvents(SavedEventStruct(
+                          title: widget.name,
+                          formattedDate: widget.formattedDate,
+                          location: widget.location,
+                        ));
+                        safeSetState(() {});
+                        logFirebaseEvent('Button_navigate_to');
 
-                              context.pushNamed(CalenderWidget.routeName);
-                            },
-                            text: 'Add to calender',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
+                        context.pushNamed(CalendarWidget.routeName);
+                      },
+                      text: 'Add to Calendar',
+                      options: FFButtonOptions(
+                        width: 270.0,
+                        height: 50.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -781,14 +697,80 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                              elevation: 0.0,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ],
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                  ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 18.0, 0.0),
+                        child: FlutterFlowIconButton(
+                          borderRadius: 50.0,
+                          buttonSize: 55.0,
+                          fillColor: FlutterFlowTheme.of(context).primary,
+                          icon: FaIcon(
+                            FontAwesomeIcons.robot,
+                            color: Colors.white,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'EVENT_DETAILS_PAGE_robot_ICN_ON_TAP');
+                            logFirebaseEvent('IconButton_bottom_sheet');
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(context).unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                  },
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: AIAssistWidget(
+                                      eventName: widget.name,
+                                      venueName: widget.venueName,
+                                      formattedDate: widget.formattedDate,
+                                      formattedTime: widget.formattedTime,
+                                      location: widget.location,
+                                      priceRange: widget.priceRange,
+                                      description: widget.description,
+                                      parkingDetail: widget.parkingDetail,
+                                      ticketUrl: widget.ticketUrl,
+                                      homepageUrl: widget.homepageUrl,
+                                      venueAddressLine1:
+                                          widget.venueAddressLine1,
+                                      accessibilityInfo:
+                                          widget.accessibilityInfo,
+                                      seatmapUrl: widget.seatmapUrl,
+                                      minPrice: widget.minPrice?.toString(),
+                                      maxPrice: widget.maxPrice?.toString(),
+                                      distance: widget.distance?.toString(),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ].divide(SizedBox(height: 5.0)),
             ),

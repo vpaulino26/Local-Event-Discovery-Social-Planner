@@ -1,10 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/index.dart';
-import 'create_profile2_widget.dart' show CreateProfile2Widget;
+import 'edit_location_widget.dart' show EditLocationWidget;
 import 'package:flutter/material.dart';
 
-class CreateProfile2Model extends FlutterFlowModel<CreateProfile2Widget> {
+class EditLocationModel extends FlutterFlowModel<EditLocationWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();

@@ -152,25 +152,29 @@ class _CreateProfile3WidgetState extends State<CreateProfile3Widget> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Choose at least 3, up to 5',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.inter(
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                      child: Text(
+                        'Choose at least 3, up to 5',
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .fontStyle,
+                              ),
+                              letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .bodyLarge
                                   .fontWeight,
                               fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .bodyLarge
                                   .fontStyle,
                             ),
-                            letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
+                      ),
                     ),
                     Flexible(
                       child: Flex(
@@ -316,47 +320,42 @@ class _CreateProfile3WidgetState extends State<CreateProfile3Widget> {
                     ),
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          logFirebaseEvent(
-                              'CREATE_PROFILE_3_SaveContinue_ON_TAP');
-                          if (functions.hasMinimumInterests(
-                              FFAppState().selectedInterests.toList())) {
-                            logFirebaseEvent('SaveContinue_backend_call');
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'CREATE_PROFILE_3_SaveContinue_ON_TAP');
+                            if (functions.hasMinimumInterests(
+                                FFAppState().selectedInterests.toList())) {
+                              logFirebaseEvent('SaveContinue_backend_call');
 
-                            await currentUserReference!.update({
-                              ...mapToFirestore(
-                                {
-                                  'interests': FFAppState().selectedInterests,
-                                },
-                              ),
-                            });
-                            logFirebaseEvent('SaveContinue_navigate_to');
+                              await currentUserReference!.update({
+                                ...mapToFirestore(
+                                  {
+                                    'interests': FFAppState().selectedInterests,
+                                  },
+                                ),
+                              });
+                              logFirebaseEvent('SaveContinue_navigate_to');
 
-                            context.pushNamed(EventsListWidget.routeName);
-                          }
-                        },
-                        text: 'Save & Continue',
-                        options: FFButtonOptions(
-                          width: 250.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: Color(0x8F0E055C),
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
+                              context.pushNamed(EventsListWidget.routeName);
+                            }
+                          },
+                          text: 'Save & Continue',
+                          options: FFButtonOptions(
+                            width: 270.0,
+                            height: 50.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -364,8 +363,18 @@ class _CreateProfile3WidgetState extends State<CreateProfile3Widget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(24.0),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
                         ),
                       ),
                     ),

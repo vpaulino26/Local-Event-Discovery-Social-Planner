@@ -17,6 +17,9 @@ void main() async {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
+  final environmentValues = FFDevEnvironmentValues();
+  await environmentValues.initialize();
+
   await initFirebase();
 
   final appState = FFAppState(); // Initialize FFAppState
@@ -155,7 +158,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'eventsList': EventsListWidget(),
-      'calender': CalenderWidget(),
+      'Calendar': CalendarWidget(),
+      'friends_page': FriendsPageWidget(),
       'profile_settings': ProfileSettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -186,10 +190,17 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.calendar_month,
+              Icons.calendar_today,
               size: 24.0,
             ),
-            label: 'Calender',
+            label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.people,
+            ),
+            label: '',
             tooltip: '',
           ),
           BottomNavigationBarItem(
